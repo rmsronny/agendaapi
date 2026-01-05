@@ -20,11 +20,12 @@
 <table border="1">
     <thead>
     <tr>
+        <th>ID</th>
         <th>Data</th>
         <th>Horário</th>
         <th>Descrição</th>
-        <th>Status</th>
-        <th>Ação</th>
+        <th>Situação</th>
+        <th>Opção</th>
     </tr>
     </thead>
     <tbody id="lista"></tbody>
@@ -38,16 +39,17 @@
             .then(r => r.json())
             .then(dados => {
                 lista.innerHTML = "";
-                dados.forEach(c => {
+                dados.forEach(dado => {
                     lista.innerHTML += `
                         <tr>
-                            <td>${c.data}</td>
-                            <td>${c.horario}</td>
-                            <td>${c.descricao}</td>
-                            <td>${c.cancelado ? "Cancelado" : "Ativo"}</td>
+                            <td>${dado.id}</td>
+                            <td>${dado.data}</td>
+                            <td>${dado.horario}</td>
+                            <td>${dado.descricao}</td>
+                            <td>${dado.cancelado ? "Cancelado" : "Ativo"}</td>
                             <td>
-                                ${!c.cancelado
-                                    ? `<button onclick="cancelar('${c.id}')">Cancelar</button>`
+                                ${!dado.cancelado
+                                    ? `<button onclick="cancelar('${dado.id}')">Cancelar</button>`
                                     : ""}
                             </td>
                         </tr>

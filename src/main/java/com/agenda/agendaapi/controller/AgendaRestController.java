@@ -1,13 +1,10 @@
 package com.agenda.agendaapi.controller;
 
 import com.agenda.agendaapi.model.Agenda;
-import com.agenda.agendaapi.repository.AgendaRepository;
 import com.agenda.agendaapi.service.AgendaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 import java.util.UUID;
 import java.util.List;
@@ -40,12 +37,14 @@ public class AgendaRestController {
     @GetMapping("/{id}")
     public Optional<Agenda> obterId(@PathVariable("id")UUID id) {
         return service.obterID(id);
+
     }
 
 
     @GetMapping
     public ResponseEntity<List<Agenda>> listar() {
         return ResponseEntity.ok(service.listar());
+
     }
 }
 
